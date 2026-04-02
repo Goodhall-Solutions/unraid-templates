@@ -71,13 +71,13 @@
   <Config
     Name="Metric Retention (days)"
     Target="FODARIS_RETENTION_DAYS"
-    Default="30"
+    Default="7"
     Mode=""
     Description="How many days of metric history to retain. Higher values use more disk space."
     Type="Variable"
     Display="advanced"
     Required="false"
-    Mask="false">30</Config>
+    Mask="false">7</Config>
 
   <!-- Config volume -->
   <Config
