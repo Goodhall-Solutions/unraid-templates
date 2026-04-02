@@ -17,7 +17,7 @@
   </Overview>
   <Category>Tools: Status: Network:Management</Category>
   <WebUI>https://[IP]:[PORT:8443]/</WebUI>
-  <TemplateURL>https://fodaris.co.uk/unraid/fodaris-server.xml</TemplateURL>
+  <TemplateURL>https://raw.githubusercontent.com/Goodhall-Solutions/unraid-templates/main/fodaris-server.xml</TemplateURL>
   <Icon>https://fodaris.co.uk/images/icon.png</Icon>
   <ExtraParams>--pid=host</ExtraParams>
   <PostArgs/>
