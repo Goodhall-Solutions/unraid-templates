@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>Fodaris Agent</Name>
+  <Repository>goodhallsolutions/fodaris-agent:latest</Repository>
+  <Registry>https://hub.docker.com/r/goodhallsolutions/fodaris-agent</Registry>
+  <Network>host</Network>
+  <Shell>sh</Shell>
+  <Privileged>true</Privileged>
+  <Support>mailto:contact@goodhallsolutions.co.uk</Support>
+  <Project>https://fodaris.co.uk</Project>
+  <Overview>
+    Fodaris Agent - lightweight monitoring agent that reports system metrics to your Fodaris server.
+
+    Collects CPU, memory, disk, network, temperature, process, and Docker container metrics.
+    Metrics are encrypted in transit with AES-256-GCM.
+
+    Requires a running Fodaris server. Get your token from Settings &gt; Endpoints in the Fodaris dashboard.
+  </Overview>
+  <Category>Tools: Status:</Category>
+  <WebUI/>
+  <TemplateURL>https://fodaris.co.uk/unraid/fodaris-agent.xml</TemplateURL>
+  <Icon>https://fodaris.co.uk/images/icon.png</Icon>
+  <ExtraParams>--pid=host</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled/>
+  <DonateText/>
+  <DonateLink/>
+  <Description>
+    Fodaris Agent collects system metrics (CPU, memory, disk, network, temperature, processes, Docker containers)
+    and sends them to your Fodaris monitoring server. Metrics are encrypted in transit with AES-256-GCM.
+
+    Before installing, add this endpoint in your Fodaris dashboard (Settings &gt; Endpoints) to get your token.
+  </Description>
+
+  <!-- Required: Fodaris server URL -->
+  <Config
+    Name="Server URL"
+    Target="FODARIS_SERVER_URL"
+    Default="https://192.168.1.10:8443"
+    Mode=""
+    Description="URL of your Fodaris server. Use the server's IP address, not localhost."
+    Type="Variable"
+    Display="always"
+    Required="true"
+    Mask="false"/>
+
+  <!-- Required: Authentication token -->
+  <Config
+    Name="Auth Token"
+    Target="FODARIS_TOKEN"
+    Default=""
+    Mode=""
+    Description="Authentication token from your Fodaris dashboard (Settings &gt; Endpoints)."
+    Type="Variable"
+    Display="always"
+    Required="true"
+    Mask="true"/>
+
+  <!-- Endpoint display name -->
+  <Config
+    Name="Endpoint Name"
+    Target="FODARIS_ENDPOINT_NAME"
+    Default="unraid-server"
+    Mode=""
+    Description="Name shown in the Fodaris dashboard for this machine."
+    Type="Variable"
+    Display="always"
+    Required="true"
+    Mask="false"/>
+
+  <!-- SSL verification -->
+  <Config
+    Name="Verify SSL"
+    Target="FODARIS_VERIFY_SSL"
+    Default="false"
+    Mode=""
+    Description="Set to false if your Fodaris server uses a self-signed certificate (default). Set to true only for trusted CA-signed certs."
+    Type="Variable"
+    Display="always"
+    Required="false"
+    Mask="false"/>
+
+  <!-- Collection interval -->
+  <Config
+    Name="Collection Interval (seconds)"
+    Target="FODARIS_INTERVAL"
+    Default="10"
+    Mode=""
+    Description="How often to collect and send metrics, in seconds. Default is 10."
+    Type="Variable"
+    Display="advanced"
+    Required="false"
+    Mask="false"/>
+
+  <!-- Docker socket for container monitoring -->
+  <Config
+    Name="Docker Socket"
+    Target="/var/run/docker.sock"
+    Default="/var/run/docker.sock"
+    Mode="ro"
+    Description="Grants the agent read-only access to Docker for container monitoring. Remove if not needed."
+    Type="Path"
+    Display="advanced"
+    Required="false"
+    Mask="false"/>
+
+</Container>

@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>Fodaris</Name>
+  <Repository>goodhallsolutions/fodaris:latest</Repository>
+  <Registry>https://hub.docker.com/r/goodhallsolutions/fodaris</Registry>
+  <Network>bridge</Network>
+  <Shell>sh</Shell>
+  <Privileged>true</Privileged>
+  <Support>mailto:contact@goodhallsolutions.co.uk</Support>
+  <Project>https://fodaris.co.uk</Project>
+  <Overview>
+    Fodaris - self-hosted infrastructure monitoring platform. Monitor servers, containers, network devices, websites, databases, and more from a single dashboard.
+
+    Includes a built-in PostgreSQL database, TLS (auto-generated self-signed cert), and a React-based web UI accessible on port 8443.
+
+    After installation, open https://your-unraid-ip:8443 and log in with admin / Fodaris2026. You will be prompted to change your password on first login.
+  </Overview>
+  <Category>Tools: Status: Network:Management</Category>
+  <WebUI>https://[IP]:[PORT:8443]/</WebUI>
+  <TemplateURL>https://fodaris.co.uk/unraid/fodaris-server.xml</TemplateURL>
+  <Icon>https://fodaris.co.uk/images/icon.png</Icon>
+  <ExtraParams>--pid=host</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled/>
+  <DonateText/>
+  <DonateLink/>
+  <Description>
+    Fodaris is a self-hosted monitoring platform for homelabs and small businesses. Monitor Linux, Windows, and macOS endpoints, Docker containers, network devices (SNMP), websites, and databases from one place.
+
+    Data stays on your hardware. No cloud accounts, no subscriptions, no telemetry.
+  </Description>
+
+  <!-- HTTPS port -->
+  <Config
+    Name="Web UI Port (HTTPS)"
+    Target="8443"
+    Default="8443"
+    Mode="tcp"
+    Description="Port for the Fodaris web interface. Access via https://your-unraid-ip:8443"
+    Type="Port"
+    Display="always"
+    Required="true"
+    Mask="false">8443</Config>
+
+  <!-- Encryption key -->
+  <Config
+    Name="Encryption Key"
+    Target="FODARIS_ENCRYPTION_KEY"
+    Default=""
+    Mode=""
+    Description="Secret key for encrypting stored data. Generate with: openssl rand -hex 32. Save this value — if lost, stored data cannot be decrypted. Leave blank to auto-generate (key lost on container restart)."
+    Type="Variable"
+    Display="always"
+    Required="false"
+    Mask="true"></Config>
+
+  <!-- Server display name -->
+  <Config
+    Name="Server Name"
+    Target="FODARIS_SERVER_NAME"
+    Default="fodaris-core"
+    Mode=""
+    Description="Display name for this Fodaris server instance."
+    Type="Variable"
+    Display="always"
+    Required="false"
+    Mask="false">fodaris-core</Config>
+
+  <!-- Data retention -->
+  <Config
+    Name="Metric Retention (days)"
+    Target="FODARIS_RETENTION_DAYS"
+    Default="30"
+    Mode=""
+    Description="How many days of metric history to retain. Higher values use more disk space."
+    Type="Variable"
+    Display="advanced"
+    Required="false"
+    Mask="false">30</Config>
+
+  <!-- Config volume -->
+  <Config
+    Name="Config"
+    Target="/app/server/config"
+    Default="/mnt/user/appdata/fodaris/config"
+    Mode="rw"
+    Description="Persistent storage for Fodaris configuration."
+    Type="Path"
+    Display="always"
+    Required="true"
+    Mask="false">/mnt/user/appdata/fodaris/config</Config>
+
+  <!-- Data volume -->
+  <Config
+    Name="Data"
+    Target="/app/server/data"
+    Default="/mnt/user/appdata/fodaris/data"
+    Mode="rw"
+    Description="Persistent storage for the Fodaris database and metrics."
+    Type="Path"
+    Display="always"
+    Required="true"
+    Mask="false">/mnt/user/appdata/fodaris/data</Config>
+
+  <!-- Backups volume -->
+  <Config
+    Name="Backups"
+    Target="/app/server/backups"
+    Default="/mnt/user/appdata/fodaris/backups"
+    Mode="rw"
+    Description="Persistent storage for Fodaris backups."
+    Type="Path"
+    Display="always"
+    Required="true"
+    Mask="false">/mnt/user/appdata/fodaris/backups</Config>
+
+  <!-- TLS certs (optional) -->
+  <Config
+    Name="TLS Certificates (optional)"
+    Target="/app/certs"
+    Default=""
+    Mode="ro"
+    Description="Optional: path to a directory containing fodaris.crt and fodaris.key for custom TLS. Leave blank to use the auto-generated self-signed certificate."
+    Type="Path"
+    Display="advanced"
+    Required="false"
+    Mask="false"></Config>
+
+  <!-- Host proc for process/sensor monitoring -->
+  <Config
+    Name="Host /proc"
+    Target="/host/proc"
+    Default="/proc"
+    Mode="ro"
+    Description="Mounts the host process filesystem so Fodaris can monitor host processes and sensors."
+    Type="Path"
+    Display="advanced"
+    Required="false"
+    Mask="false">/proc</Config>
+
+  <!-- Host sys -->
+  <Config
+    Name="Host /sys"
+    Target="/host/sys"
+    Default="/sys"
+    Mode="ro"
+    Description="Mounts the host sysfs so Fodaris can read hardware sensor data."
+    Type="Path"
+    Display="advanced"
+    Required="false"
+    Mask="false">/sys</Config>
+
+  <!-- Docker socket -->
+  <Config
+    Name="Docker Socket"
+    Target="/var/run/docker.sock"
+    Default="/var/run/docker.sock"
+    Mode="ro"
+    Description="Grants Fodaris read-only access to Docker for container monitoring."
+    Type="Path"
+    Display="advanced"
+    Required="false"
+    Mask="false">/var/run/docker.sock</Config>
+
+</Container>
