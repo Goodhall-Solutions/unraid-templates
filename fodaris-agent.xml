@@ -18,7 +18,7 @@
   </Overview>
   <Category>Tools: Status:</Category>
   <WebUI/>
-  <TemplateURL>https://fodaris.co.uk/unraid/fodaris-agent.xml</TemplateURL>
+  <TemplateURL>https://raw.githubusercontent.com/Goodhall-Solutions/unraid-templates/main/fodaris-agent.xml</TemplateURL>
   <Icon>https://fodaris.co.uk/images/icon.png</Icon>
   <ExtraParams>--pid=host</ExtraParams>
   <PostArgs/>
