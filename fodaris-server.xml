@@ -49,7 +49,7 @@
     Target="FODARIS_ENCRYPTION_KEY"
     Default=""
     Mode=""
-    Description="Secret key for encrypting stored data. Generate with: openssl rand -hex 32. Save this value — if lost, stored data cannot be decrypted. Leave blank to auto-generate (key lost on container restart)."
+    Description="Secret key for encrypting stored data. Generate with: openssl rand -hex 32. Save this value - if lost, stored data cannot be decrypted. Leave blank to auto-generate (key lost on container restart)."
     Type="Variable"
     Display="always"
     Required="false"
