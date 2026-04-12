@@ -15,7 +15,7 @@
 
     After installation, open https://your-unraid-ip:8443 and log in with admin / Fodaris2026. You will be prompted to change your password on first login.
   </Overview>
-  <Category>Tools: Status: Network:Management</Category>
+  <Category>Tools:Utilities, Network:Management</Category>
   <WebUI>https://[IP]:[PORT:8443]/</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/Goodhall-Solutions/unraid-templates/main/fodaris-server.xml</TemplateURL>
   <Icon>https://fodaris.co.uk/images/icon.png</Icon>
