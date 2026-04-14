@@ -5,16 +5,19 @@
   <Registry>https://hub.docker.com/r/goodhallsolutions/fodaris-agent</Registry>
   <Network>host</Network>
   <Shell>sh</Shell>
-  <Privileged>true</Privileged>
+  <Privileged>false</Privileged>
   <Support>mailto:contact@goodhallsolutions.co.uk</Support>
   <Project>https://fodaris.co.uk</Project>
   <Overview>
-    Fodaris Agent - lightweight monitoring agent that reports system metrics to your Fodaris server.
+    Fodaris Agent - lightweight monitoring agent that collects system metrics and sends them to your Fodaris server.
 
-    Collects CPU, memory, disk, network, temperature, process, and Docker container metrics.
-    Metrics are encrypted in transit with AES-256-GCM.
+    Collects CPU, memory, disk, network, temperature, GPU, process, and Docker container metrics. All data is encrypted in transit with AES-256-GCM.
 
-    Requires a running Fodaris server. Get your token from Settings &gt; Endpoints in the Fodaris dashboard.
+    Designed for monitoring remote Docker hosts, NAS devices, and other Linux machines. Install the agent on each machine you want to monitor.
+
+    Requires a running Fodaris server. Get your auth token from Settings &gt; Endpoints in the Fodaris dashboard before installing.
+
+    Optional: Enable privileged mode in the container settings for SMART disk health monitoring and full hardware sensor access.
   </Overview>
   <Category>Tools:Utilities, Network:Management</Category>
   <WebUI/>
@@ -27,10 +30,11 @@
   <DonateText/>
   <DonateLink/>
   <Description>
-    Fodaris Agent collects system metrics (CPU, memory, disk, network, temperature, processes, Docker containers)
-    and sends them to your Fodaris monitoring server. Metrics are encrypted in transit with AES-256-GCM.
+    Fodaris Agent collects system metrics (CPU, memory, disk, network, temperature, GPU, SMART disk health, processes, Docker containers) and sends them to your Fodaris monitoring server. Metrics are encrypted in transit with AES-256-GCM.
 
-    Before installing, add this endpoint in your Fodaris dashboard (Settings &gt; Endpoints) to get your token.
+    Use this to monitor additional Docker hosts, NAS devices, Raspberry Pis, or any Linux machine from your central Fodaris dashboard. Agents are also available for Windows and macOS at fodaris.co.uk.
+
+    Before installing, add this endpoint in your Fodaris dashboard (Settings &gt; Endpoints) to get your auth token.
   </Description>
 
   <!-- Required: Fodaris server URL -->
