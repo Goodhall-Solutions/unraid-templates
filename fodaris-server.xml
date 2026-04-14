@@ -5,11 +5,13 @@
   <Registry>https://hub.docker.com/r/goodhallsolutions/fodaris</Registry>
   <Network>bridge</Network>
   <Shell>sh</Shell>
-  <Privileged>true</Privileged>
+  <Privileged>false</Privileged>
   <Support>mailto:contact@goodhallsolutions.co.uk</Support>
   <Project>https://fodaris.co.uk</Project>
   <Overview>
-    Fodaris - self-hosted infrastructure monitoring platform. Monitor servers, containers, network devices, websites, databases, and more from a single dashboard.
+    Fodaris - self-hosted monitoring and observability platform for homelabs and small businesses. Monitor servers, Docker containers, network devices (SNMP), websites, APIs, databases, and applications from a single dashboard.
+
+    Features: real-time metrics, alerting, uptime monitoring, IPAM, log viewer, network topology, and reporting. Agents available for Linux, Windows, macOS, and Docker.
 
     Includes a built-in PostgreSQL database, TLS (auto-generated self-signed cert), and a React-based web UI accessible on port 8443.
 
@@ -26,9 +28,11 @@
   <DonateText/>
   <DonateLink/>
   <Description>
-    Fodaris is a self-hosted monitoring platform for homelabs and small businesses. Monitor Linux, Windows, and macOS endpoints, Docker containers, network devices (SNMP), websites, and databases from one place.
+    Fodaris is a self-hosted monitoring and observability platform. Monitor Linux, Windows, and macOS endpoints, Docker containers, network devices (SNMP), websites, APIs, databases, and applications from a single dashboard.
 
-    Data stays on your hardware. No cloud accounts, no subscriptions, no telemetry.
+    Features include real-time metrics, alerting with email/Slack/Discord/Teams/PagerDuty, uptime monitoring, IPAM, log viewer, network topology mapping, and reporting. Alternative to Uptime Kuma, Zabbix, Beszel, and Checkmk for homelabs.
+
+    Data stays on your hardware. No cloud accounts, no telemetry.
   </Description>
 
   <!-- HTTPS port -->
@@ -49,7 +53,7 @@
     Target="FODARIS_ENCRYPTION_KEY"
     Default=""
     Mode=""
-    Description="Secret key for encrypting stored data. Generate with: openssl rand -hex 32. Save this value - if lost, stored data cannot be decrypted. Leave blank to auto-generate (key lost on container restart)."
+    Description="Secret key for encrypting stored data. Generate with: openssl rand -hex 32. Save this value — if lost, stored data cannot be decrypted. Leave blank to auto-generate (key lost on container restart)."
     Type="Variable"
     Display="always"
     Required="false"
@@ -71,13 +75,13 @@
   <Config
     Name="Metric Retention (days)"
     Target="FODARIS_RETENTION_DAYS"
-    Default="7"
+    Default="30"
     Mode=""
     Description="How many days of metric history to retain. Higher values use more disk space."
     Type="Variable"
     Display="advanced"
     Required="false"
-    Mask="false">7</Config>
+    Mask="false">30</Config>
 
   <!-- Config volume -->
   <Config
