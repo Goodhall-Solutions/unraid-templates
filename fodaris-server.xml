@@ -47,6 +47,30 @@
     Required="true"
     Mask="false">8443</Config>
 
+  <!-- Agent ingest port (separate from UI for security) -->
+  <Config
+    Name="Agent Ingest Port"
+    Target="24443"
+    Default="24443"
+    Mode="tcp"
+    Description="Port your Fodaris agents push metrics to. Keep this on your LAN; you do not need to open it to the internet. Your agents' Server URL should be https://your-unraid-ip:24443"
+    Type="Port"
+    Display="always"
+    Required="true"
+    Mask="false">24443</Config>
+
+  <!-- OpenTelemetry ingest port -->
+  <Config
+    Name="OpenTelemetry Ingest Port"
+    Target="24444"
+    Default="24444"
+    Mode="tcp"
+    Description="Port for OpenTelemetry collectors pushing OTLP/HTTP. Only needed if you push OTel metrics into Fodaris. Safe to leave open on the LAN."
+    Type="Port"
+    Display="always"
+    Required="false"
+    Mask="false">24444</Config>
+
   <!-- Encryption key -->
   <Config
     Name="Encryption Key"
